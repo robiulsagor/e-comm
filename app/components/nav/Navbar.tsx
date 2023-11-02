@@ -17,7 +17,7 @@ const Navbar = () => {
         <div className="sticky top-0 left-0 w-full bg-slate-200">
             <div className="">
                 <Container>
-                    <div className="flex items-center justify-between p-4">
+                    <div className="flex items-center justify-between py-4">
                         <Link href={"/"}
                             className={`${redressed.className} text-2xl`}>E-Comm</Link>
 

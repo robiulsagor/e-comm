@@ -13,7 +13,7 @@ const Footer = () => {
                 <div className="grid gap-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
                     <div>
                         <h2 className="mb-4">Shop Categories</h2>
-                        <ul className="flex flex-col text-[13px] md:text-[15px] gap-1 text-slate-400 ">
+                        <ul className="flex flex-col text-[13px] md:text-[15px] gap-1 text-slate-400">
 
                             <Link href={"/"}>Phones</Link>
                             <Link href={"/"}>Laptops</Link>
