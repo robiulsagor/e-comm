@@ -9,7 +9,7 @@ const HomeBanner = () => {
                     <p className="text-white text-sm md:text-[16px]">Enjoy discounts on selectec items</p>
                     <p className="uppercase text-yellow-400 text-2xl font-bold md:text-3xl lg:text-4xl">get 55% off</p>
                 </div>
-                <div className="aspect-auto flex-1">
+                <div className="aspect-vidoe flex-1">
                     <Image
                         src="/banner-image.png"
                         alt="Banner Img"
