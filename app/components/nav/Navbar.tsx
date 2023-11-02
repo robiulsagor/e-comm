@@ -14,7 +14,7 @@ const Navbar = () => {
     const [userOptions, setUserOptions] = useState(false)
 
     return (
-        <div className="sticky top-0 left-0 w-full bg-slate-200">
+        <div className="sticky top-0 left-0 w-full bg-slate-200 z-30">
             <div className="">
                 <Container>
                     <div className="flex items-center justify-between py-4">

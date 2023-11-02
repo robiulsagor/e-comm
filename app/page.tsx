@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Container from './components/Container'
 import HomeBanner from './components/HomeBanner'
+import Products from './components/Products/Products'
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <Container>
         <div>
           <HomeBanner />
+          <Products />
         </div>
       </Container>
     </div>
