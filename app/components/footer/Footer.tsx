@@ -14,26 +14,26 @@ const Footer = () => {
 
                     <div className="w-1/2  md:w-1/3 lg:w-1/4 px-2">
                         <h2 className="mb-4">Shop Categories</h2>
-                        <ul className="flex flex-col text-[13px] md:text-[15px] gap-1 text-slate-400">
+                        <ul className="flex flex-col text-[13px] md:text-[15px] gap-1 text-slate-400 items-start">
 
-                            <Link href={"/"}>Phones</Link>
-                            <Link href={"/"}>Laptops</Link>
-                            <Link href={"/"}>Desktops</Link>
-                            <Link href={"/"}>Watches</Link>
-                            <Link href={"/"}>TVs</Link>
-                            <Link href={"/"}>Accessories</Link>
+                            <Link className="hover:text-slate-200 transition-all" href={"/"}>Phones</Link>
+                            <Link className="hover:text-slate-200 transition-all" href={"/"}>Laptops</Link>
+                            <Link className="hover:text-slate-200 transition-all" href={"/"}>Desktops</Link>
+                            <Link className="hover:text-slate-200 transition-all" href={"/"}>Watches</Link>
+                            <Link className="hover:text-slate-200 transition-all" href={"/"}>TVs</Link>
+                            <Link className="hover:text-slate-200 transition-all" href={"/"}>Accessories</Link>
                         </ul>
                     </div>
 
                     <div className="w-1/2  md:w-1/3 lg:w-1/4 px-2">
                         <h2 className="mb-4">Customer Sevices</h2>
-                        <ul className="flex flex-col text-[13px] md:text-[15px] gap-1 text-slate-400 ">
+                        <ul className="flex flex-col text-[13px] md:text-[15px] gap-1 text-slate-400 items-start">
 
-                            <Link href={"/"}>Contact Us</Link>
-                            <Link href={"/"}>Shipping Policy</Link>
-                            <Link href={"/"}>Returns &amp; Exchanges</Link>
-                            <Link href={"/"}>Watches</Link>
-                            <Link href={"/"}>FAQs</Link>
+                            <Link className="hover:text-slate-200 transition-all" href={"/"}>Contact Us</Link>
+                            <Link className="hover:text-slate-200 transition-all" href={"/"}>Shipping Policy</Link>
+                            <Link className="hover:text-slate-200 transition-all" href={"/"}>Returns &amp; Exchanges</Link>
+                            <Link className="hover:text-slate-200 transition-all" href={"/"}>Watches</Link>
+                            <Link className="hover:text-slate-200 transition-all" href={"/"}>FAQs</Link>
                         </ul>
                     </div>
 
@@ -51,18 +51,18 @@ const Footer = () => {
 
                     <div className="w-1/2  md:w-1/3 lg:w-1/4 px-2 lg:text-center">
                         <h2 className="mb-4">Follow Us</h2>
-                        <ul className="flex flex-row text-[13px] md:text-[15px] gap-2 text-slate-300 text-center lg:justify-center ">
+                        <ul className="flex flex-row text-[13px] md:text-[15px] gap-2 text-slate-300 text-center lg:justify-center items-start">
 
-                            <Link href={"/"}>
+                            <Link className="hover:text-slate-200 transition-all" href={"/"}>
                                 <BiLogoFacebookCircle size={20} />
                             </Link>
-                            <Link href={"/"}>
+                            <Link className="hover:text-slate-200 transition-all" href={"/"}>
                                 <FaXTwitter size={20} />
                             </Link>
-                            <Link href={"/"}>
+                            <Link className="hover:text-slate-200 transition-all" href={"/"}>
                                 <AiFillInstagram size={20} />
                             </Link>
-                            <Link href={"/"}>
+                            <Link className="hover:text-slate-200 transition-all" href={"/"}>
                                 <AiFillYoutube size={20} />
                             </Link>
 
