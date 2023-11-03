@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppins.className} text-slate-700`}>
-        <div className='flex flex-col h-screen'>
+        <div className='flex flex-col'>
           <Navbar />
           <main className='flex-grow'>
             {children}
