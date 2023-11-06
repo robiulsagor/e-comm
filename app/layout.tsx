@@ -4,7 +4,7 @@ import './globals.css'
 import Navbar from './components/nav/Navbar'
 import Footer from './components/footer/Footer'
 
-const poppins = Poppins({ subsets: ['latin'], weight: ["400"] })
+const poppins = Poppins({ subsets: ['latin'], weight: ["500"] })
 
 export const metadata: Metadata = {
   title: 'E-comm',

@@ -21,6 +21,7 @@ const Navbar = () => {
                         <Link href={"/"}
                             className={`${redressed.className} text-2xl`}>E-Comm</Link>
 
+                        {/* items search bar */}
                         <div className="hidden md:block border md:w-[350px] lg:w-[380px] xl:w-[420px] text-sm lg:text-[16px]">
                             <div className="border border-slate-500 rounded-lg overflow-hidden flex ">
                                 <input type="text" name="" id="" className="p-2 outline-none flex-grow " />
@@ -28,11 +29,12 @@ const Navbar = () => {
                             </div>
                         </div>
 
+                        {/* cart Button */}
                         <div className="flex justify-between items-center gap-8 lg:gap-12 relative  select-none">
-
                             <Link href='/cart' className="cursor-pointer relative">
                                 <BsCart3 className="w-[22px] h-[22px] md:w-[27px] md:h-[27px]" />
-                                <span className="absolute -top-4 -right-4 bg-slate-900 text-slate-100  rounded-full text-sm px-2 py-1">2</span>
+                                <span className="absolute -top-4 -right-4 bg-slate-900 text-slate-100  rounded-full text-sm px-2 py-1">0</span>
+                                {/* cart items count */}
                             </Link>
 
                             <div className="border border-slate-500 flex gap-2 items-end rounded-3xl p-2 cursor-pointer z-30"
