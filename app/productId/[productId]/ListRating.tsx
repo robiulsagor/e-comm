@@ -1,8 +1,9 @@
 "use client"
 
+import Avatar from "@/app/components/Avatar"
 import Heading from "@/app/components/Heading"
 import Hr from "@/app/components/Hr"
-import { Avatar, Rating } from "@mui/material"
+import { Rating } from "@mui/material"
 import moment from "moment"
 import Image from "next/image"
 

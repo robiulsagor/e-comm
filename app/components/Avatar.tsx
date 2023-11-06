@@ -6,15 +6,16 @@ interface AvatarProps {
 
 const Avatar: React.FC<AvatarProps> = ({ src }) => {
     if (src) {
-        <Image
+        return <Image
             src={src}
             alt="Avatar Image"
-            width={10} height={10}
+            width={30} height={30}
             className="rounded-full "
         />
-
     }
-    return <FaUserCircle size={10} className="w-10 h-2" />
+
+    return <FaUserCircle size={24} />
+
 }
 
 export default Avatar
