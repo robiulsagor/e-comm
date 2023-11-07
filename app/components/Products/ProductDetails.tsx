@@ -1,5 +1,5 @@
 "use client"
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { products } from '@/utils/products';
 import { formatePrice } from '@/utils/formatePrice';
 import { Rating } from '@mui/material';
@@ -9,6 +9,9 @@ import SetQuantity from './SetQuantity';
 import Button from '../Button';
 import Image from 'next/image';
 import ProductImage from './ProductImage';
+import { useCart } from '@/hooks/useCart';
+import { BiCheckCircle, BiMessageRoundedCheck } from 'react-icons/bi';
+import { useRouter } from 'next/navigation';
 
 export type CartProductType = {
     id: string,
@@ -28,6 +31,9 @@ export type SelectedImageType = {
 }
 
 const ProductDetails = ({ product }: any) => {
+    const router = useRouter()
+    const { cartProducts, cartTotalQty, handleAddProductToCart } = useCart()
+    const [isProductInCart, setIsProductInCart] = useState(false)
 
     const productRating = product.reviews.reduce((acc: any, item: any) => item.rating + acc, 0) / product.reviews.length
 
@@ -77,6 +83,18 @@ const ProductDetails = ({ product }: any) => {
         [cartProduct.quantity],
     )
 
+
+    useEffect(() => {
+        setIsProductInCart(false)
+
+        if (cartProducts) {
+            const existingIndex = cartProducts.findIndex((item) => item.id === product.id)
+            if (existingIndex > -1) {
+                setIsProductInCart(true)
+            }
+        }
+    }, [cartProducts])
+
     return (
         <div>
 
@@ -110,29 +128,40 @@ const ProductDetails = ({ product }: any) => {
                     </div>
 
                     <Hr />
-
-                    <SetColor
-                        cartProduct={cartProduct}
-                        images={product.images}
-                        handleColorSelect={handleColorSelect}
-                    />
-
-                    <Hr />
-
-                    <SetQuantity
-                        cartCounter={false}
-                        cartProduct={cartProduct}
-                        handleQtyIncrease={handleQtyIncrease}
-                        handleQtyDecrease={handleQtyDecrease}
-                    />
-
-                    <Hr />
-                    <div className='max-w-[300px]'>
-                        <Button
-                            label='ADD TO CART'
-                            onClick={() => { }}
-                        />
+                    {isProductInCart ? <div className='flex flex-col gap-4'>
+                        <div className='flex items-center gap-3'>
+                            <BiCheckCircle className="text-teal-600" size={24} />
+                            <span className='text-slate-500'> Product Added to cart</span>
+                        </div>
+                        <div className='max-w-[300px]'>
+                            <Button
+                                label='View Cart'
+                                onClick={() => { router.push("/cart") }}
+                                outline
+                            />
+                        </div>
                     </div>
+                        : <>
+                            <SetColor
+                                cartProduct={cartProduct}
+                                images={product.images}
+                                handleColorSelect={handleColorSelect}
+                            />
+                            <Hr />
+                            <SetQuantity
+                                cartCounter={false}
+                                cartProduct={cartProduct}
+                                handleQtyIncrease={handleQtyIncrease}
+                                handleQtyDecrease={handleQtyDecrease}
+                            />
+                            <Hr />
+                            <div className='max-w-[300px]'>
+                                <Button
+                                    label='ADD TO CART'
+                                    onClick={() => handleAddProductToCart(cartProduct)}
+                                />
+                            </div>
+                        </>}
                 </div>
             </div>
         </div>

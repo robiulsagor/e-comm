@@ -4,6 +4,7 @@ import './globals.css'
 import Navbar from './components/nav/Navbar'
 import Footer from './components/footer/Footer'
 import CartProvider from '@/providers/CartProvider'
+import { Toaster } from 'react-hot-toast'
 
 const poppins = Poppins({ subsets: ['latin'], weight: ["500"] })
 
@@ -28,6 +29,7 @@ export default function RootLayout({
             </main>
             <Footer />
           </div>
+          <Toaster toastOptions={{ style: { background: "rgb(51 55 61)", color: "#fff" } }} />
         </CartProvider>
       </body>
     </html>
