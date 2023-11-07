@@ -40,12 +40,9 @@ export const CartContextProvider = (props: Props) => {
 
     useEffect(() => {
         const productFromLocalStorage = JSON.parse(localStorage.getItem("eCommShoppingCart")!)
-        console.log(productFromLocalStorage);
-
         if (productFromLocalStorage) {
             setCartProducts(productFromLocalStorage)
         }
-
     }, [])
 
     const value = {

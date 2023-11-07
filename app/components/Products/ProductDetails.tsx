@@ -83,7 +83,6 @@ const ProductDetails = ({ product }: any) => {
         [cartProduct.quantity],
     )
 
-
     useEffect(() => {
         setIsProductInCart(false)
 
