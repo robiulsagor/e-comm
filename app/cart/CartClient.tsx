@@ -6,9 +6,10 @@ import { BiArrowBack } from "react-icons/bi"
 import Heading from "../components/Heading"
 import Button from "../components/Button"
 import ItemContent from "./ItemContent"
+import { formatePrice } from "@/utils/formatePrice"
 
 const CartClient = () => {
-    const { cartProducts, handleRemoveAllProductFromCart } = useCart()
+    const { cartProducts, handleRemoveAllProductFromCart, cartTotalAmount } = useCart()
 
     // if no products added to cart
     if (cartProducts == null || cartProducts.length === 0) {
@@ -43,7 +44,9 @@ const CartClient = () => {
                 <div className="text-sm flex flex-col gap-3">
                     <div className="flex items-center justify-between font-bold text-base">
                         <span>Subtotal</span>
-                        <span>$1,000</span>
+                        <span>
+                            {formatePrice(cartTotalAmount)}
+                        </span>
                     </div>
                     <p className="text-slate-500">Taxes and shipping calculate at checkout</p>
                     <Button label="Checkout" onClick={() => { }}
