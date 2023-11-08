@@ -7,11 +7,10 @@ import Button from "../components/Button"
 import Link from "next/link"
 import { AiOutlineGoogle } from "react-icons/ai"
 
-const RegisterForm = () => {
+const LoginForm = () => {
     const [isLoading, setIsLoading] = useState(false)
     const { register, handleSubmit, formState: { errors } } = useForm<FieldValues>({
         defaultValues: {
-            name: "",
             email: "",
             password: ""
         }
@@ -25,20 +24,13 @@ const RegisterForm = () => {
 
     return (
         <>
-            <Heading title='Sign up for e~Comm' />
-            <Button outline label="Sign Up with Google"
+            <Heading title='Sign in to e~Comm' />
+            <Button outline label="Sign In with Google"
                 icon={AiOutlineGoogle}
                 onClick={() => { }}
             />
             <hr className='bg-slate-300 w-full' />
-            <Input
-                id="name"
-                label='Name'
-                disabled={isLoading}
-                register={register}
-                errors={errors}
-                required
-            />
+
             <Input
                 id="email"
                 label='Email'
@@ -63,10 +55,10 @@ const RegisterForm = () => {
             />
 
             <p className="text-sm">
-                Already have an account? <Link className="underline" href={'/login'}>Login</Link>
+                Don't have an account? <Link className="underline" href={'/register'}>Register</Link>
             </p>
         </>
     )
 }
 
-export default RegisterForm
+export default LoginForm
