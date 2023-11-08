@@ -9,11 +9,13 @@ import Container from "../Container"
 import { useState, useEffect } from "react"
 import { useCart } from "@/hooks/useCart"
 import CartCount from "./CartCount"
+import { useRouter } from "next/navigation"
 
 const redressed = Redressed({ subsets: ["latin"], weight: "400" })
 
 const Navbar = () => {
     const [userOptions, setUserOptions] = useState(false)
+    const router = useRouter()
 
 
     return (
@@ -44,8 +46,9 @@ const Navbar = () => {
 
                             <div className={` top-full right-0  bg-slate-50 absolute z-30 overflow-hidden transition-all duration-300 rounded-lg shadow-xl ${userOptions ? "w-auto" : "w-0"}`}>
                                 <ul className="flex flex-col w-40">
-                                    <Link href={"/"} className="py-2 px-4 hover:bg-slate-300">Login</Link>
-                                    <Link href={"/"} className="py-2 px-4 hover:bg-slate-300">Register</Link>
+                                    <p onClick={() => { router.push("/login"); setUserOptions(false) }}
+                                        className="py-2 px-4 hover:bg-slate-300 cursor-pointer">Login</p>
+                                    <p onClick={() => { router.push("/register"); setUserOptions(false) }} className="py-2 px-4 hover:bg-slate-300 cursor-pointer">Register</p>
                                 </ul>
                             </div>
                         </div>
