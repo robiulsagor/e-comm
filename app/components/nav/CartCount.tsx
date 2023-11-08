@@ -10,7 +10,6 @@ const CartCount = () => {
             <span className="absolute -top-4 -right-4 bg-slate-700 text-slate-100  rounded-full text-sm px-2 py-1 h-6 w-6 flex items-center justify-center">
                 {cartTotalQty || 0}
             </span>
-            {/* cart items count */}
         </Link>
     )
 }
