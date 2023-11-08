@@ -8,7 +8,7 @@ import Button from "../components/Button"
 import ItemContent from "./ItemContent"
 
 const CartClient = () => {
-    const { cartProducts } = useCart()
+    const { cartProducts, handleRemoveAllProductFromCart } = useCart()
 
     // if no products added to cart
     if (cartProducts == null || cartProducts.length === 0) {
@@ -38,7 +38,7 @@ const CartClient = () => {
             </div>
             <div className="flex justify-between border-t-[1.2px] border-slate-200 py-4">
                 <div className="w-[100px]">
-                    <Button label="Clear Cart" onClick={() => { }} small outline />
+                    <Button label="Clear Cart" onClick={handleRemoveAllProductFromCart} small outline />
                 </div>
                 <div className="text-sm flex flex-col gap-3">
                     <div className="flex items-center justify-between font-bold text-base">

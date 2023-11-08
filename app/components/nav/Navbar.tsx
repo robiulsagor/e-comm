@@ -6,12 +6,14 @@ import { BsCart3 } from "react-icons/bs"
 import { AiOutlineUser } from "react-icons/ai"
 import { BiSolidChevronDownSquare } from "react-icons/bi"
 import Container from "../Container"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useCart } from "@/hooks/useCart"
 
 const redressed = Redressed({ subsets: ["latin"], weight: "400" })
 
 const Navbar = () => {
     const [userOptions, setUserOptions] = useState(false)
+    const { cartProducts } = useCart()
 
     return (
         <div className="sticky top-0 left-0 w-full bg-slate-200 z-30">
@@ -33,7 +35,9 @@ const Navbar = () => {
                         <div className="flex justify-between items-center gap-8 lg:gap-12 relative  select-none">
                             <Link href='/cart' className="cursor-pointer relative">
                                 <BsCart3 className="w-[22px] h-[22px] md:w-[27px] md:h-[27px]" />
-                                <span className="absolute -top-4 -right-4 bg-slate-900 text-slate-100  rounded-full text-sm px-2 py-1">0</span>
+                                <span className="absolute -top-4 -right-4 bg-slate-900 text-slate-100  rounded-full text-sm px-2 py-1">
+                                    {cartProducts?.length || 0}
+                                </span>
                                 {/* cart items count */}
                             </Link>
 
