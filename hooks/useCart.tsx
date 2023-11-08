@@ -5,6 +5,7 @@ import { useEffect } from "react"
 
 interface cartContextType {
     cartTotalQty: number;
+    cartTotalAmount: number;
     cartProducts: CartProductType[] | null;
     handleAddProductToCart: (product: CartProductType) => void;
     handleRemoveProductFromCart: (product: CartProductType) => void;
@@ -21,6 +22,7 @@ export const CartContext = createContext<cartContextType | null>(null)
 
 export const CartContextProvider = (props: Props) => {
     const [cartTotalQty, setCartTotalQty] = useState(0)
+    const [cartTotalAmount, setCartTotalAmount] = useState(0)
     const [cartProducts, setCartProducts] = useState<CartProductType[] | null>(null)
 
     const handleAddProductToCart = useCallback(
@@ -107,8 +109,29 @@ export const CartContextProvider = (props: Props) => {
         }
     }, [])
 
+    useEffect(() => {
+        const getTotals = () => {
+            if (cartProducts) {
+                const { total, qty } = cartProducts?.reduce((acc, item) => {
+                    const itemTotal = item.quantity * item.price
+                    acc.total += itemTotal
+                    acc.qty += item.quantity
+                    return acc
+                }, {
+                    total: 0,
+                    qty: 0
+                })
+                setCartTotalQty(qty)
+                setCartTotalAmount(total)
+            }
+        }
+
+        getTotals()
+    }, [cartProducts])
+
     const value = {
         cartTotalQty,
+        cartTotalAmount,
         cartProducts,
         handleAddProductToCart,
         handleRemoveProductFromCart,
