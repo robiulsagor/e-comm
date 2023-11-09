@@ -29,8 +29,6 @@ const RegisterForm = () => {
         axios.post("/api/register", data)
             .then(() => {
                 toast.success("User created")
-                console.log(data);
-
 
                 signIn("credentials", {
                     email: data.email,
@@ -60,6 +58,7 @@ const RegisterForm = () => {
             <Button outline label="Sign Up with Google"
                 icon={AiOutlineGoogle}
                 onClick={() => { }}
+                disabled={isLoading}
             />
             <hr className='bg-slate-300 w-full' />
             <Input
