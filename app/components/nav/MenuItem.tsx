@@ -7,7 +7,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
     children, onClick
 }) => {
     return (
-        <div onClick={onClick} className="py-2 px-4 hover:bg-slate-300">
+        <div onClick={onClick} className="py-2 px-4 hover:bg-slate-300 cursor-pointer">
             {children}
         </div>
     )

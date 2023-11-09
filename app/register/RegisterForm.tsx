@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Heading from '../components/Heading'
 import Input from '../components/inputs/Input'
 import { FieldValues, useForm, SubmitHandler } from "react-hook-form"
@@ -10,9 +10,13 @@ import axios from "axios"
 import toast from "react-hot-toast"
 import { signIn } from "next-auth/react"
 import { useRouter } from "next/navigation"
-import bcrypt from "bcrypt"
+import { SafeUser } from "@/types"
 
-const RegisterForm = () => {
+interface LoginFormProps {
+    currentUser: SafeUser | null
+}
+
+const RegisterForm: React.FC<LoginFormProps> = ({ currentUser }) => {
     const [isLoading, setIsLoading] = useState(false)
     const { register, handleSubmit, formState: { errors } } = useForm<FieldValues>({
         defaultValues: {
@@ -52,49 +56,60 @@ const RegisterForm = () => {
             })
     }
 
+    useEffect(() => {
+        currentUser && router.push("/cart")
+    }, [])
+
     return (
         <>
-            <Heading title='Sign up for e~Comm' />
-            <Button outline label="Sign Up with Google"
-                icon={AiOutlineGoogle}
-                onClick={() => { }}
-                disabled={isLoading}
-            />
-            <hr className='bg-slate-300 w-full' />
-            <Input
-                id="name"
-                label='Name'
-                disabled={isLoading}
-                register={register}
-                errors={errors}
-                required
-            />
-            <Input
-                id="email"
-                label='Email'
-                disabled={isLoading}
-                register={register}
-                errors={errors}
-                required
-            />
-            <Input
-                id="password"
-                label='Password'
-                disabled={isLoading}
-                register={register}
-                errors={errors}
-                required
-                type="password"
-            />
+            {currentUser ? <p>
+                Logged In. Redirecting...
+            </p> : (
 
-            <Button
-                label={isLoading ? "Loading" : "Submit"}
-                onClick={handleSubmit(onSubmit)}
-            />
+                <>
+                    <Heading title='Sign up for e~Comm' />
+                    <Button outline label="Continue with Google"
+                        icon={AiOutlineGoogle}
+                        onClick={() => signIn("google")}
+                        disabled={isLoading}
+                    />
+                    <hr className='bg-slate-300 w-full' />
+                    <Input
+                        id="name"
+                        label='Name'
+                        disabled={isLoading}
+                        register={register}
+                        errors={errors}
+                        required
+                    />
+                    <Input
+                        id="email"
+                        label='Email'
+                        disabled={isLoading}
+                        register={register}
+                        errors={errors}
+                        required
+                    />
+                    <Input
+                        id="password"
+                        label='Password'
+                        disabled={isLoading}
+                        register={register}
+                        errors={errors}
+                        required
+                        type="password"
+                    />
 
-            <p className="text-sm">
-                Already have an account? <Link className="underline" href={'/login'}>Login</Link>
-            </p>
+                    <Button
+                        label={isLoading ? "Loading" : "Submit"}
+                        onClick={handleSubmit(onSubmit)}
+                    />
+
+                    <p className="text-sm">
+                        Already have an account? <Link className="underline" href={'/login'}>Login</Link>
+                    </p>
+                </>
+            )}
         </>
     )
 }

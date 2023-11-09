@@ -1,9 +1,12 @@
+'use client'
+
 import { useCart } from "@/hooks/useCart"
 import Link from "next/link"
 import { CiShoppingCart } from "react-icons/ci"
 
 const CartCount = () => {
     const { cartTotalQty } = useCart()
+
     return (
         <Link href='/cart' className="cursor-pointer relative">
             <CiShoppingCart size={24} />
