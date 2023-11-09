@@ -9,8 +9,6 @@ const redressed = Redressed({ subsets: ["latin"], weight: "400" })
 
 const Navbar = async () => {
     const currentUser = await getCurrentUser() || null
-    console.log(currentUser);
-
 
     return (
         <div className="sticky top-0 left-0 w-full bg-slate-200 z-30">
