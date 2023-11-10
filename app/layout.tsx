@@ -7,7 +7,7 @@ import CartProvider from '@/providers/CartProvider'
 import { Toaster } from 'react-hot-toast'
 import { getCurrentUser } from '@/actions/getUserFromDB'
 
-const poppins = Poppins({ subsets: ['latin'], weight: ["400"] })
+const poppins = Poppins({ subsets: ['latin'], weight: ["400", "700", "900"] })
 
 export const metadata: Metadata = {
   title: 'E-comm',

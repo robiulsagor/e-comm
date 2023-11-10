@@ -7,8 +7,15 @@ import Heading from "../components/Heading"
 import Button from "../components/Button"
 import ItemContent from "./ItemContent"
 import { formatePrice } from "@/utils/formatePrice"
+import { SafeUser } from "@/types"
+import { useRouter } from "next/navigation"
 
-const CartClient = () => {
+interface CartClientProps {
+    currentUser: SafeUser | null | undefined
+}
+
+const CartClient: React.FC<CartClientProps> = ({ currentUser }) => {
+    const router = useRouter()
     const { cartProducts, handleRemoveAllProductFromCart, cartTotalAmount } = useCart()
 
     // if no products added to cart
@@ -49,7 +56,11 @@ const CartClient = () => {
                         </span>
                     </div>
                     <p className="text-slate-500">Taxes and shipping calculate at checkout</p>
-                    <Button label="Checkout" onClick={() => { }}
+                    <Button label={currentUser ? "Checkout" : "Login to checkout"}
+                        outline={currentUser ? false : true}
+                        onClick={() => {
+                            currentUser ? router.push("/checkout") : router.push("/login")
+                        }}
                     />
                     <Link href="/" className='px-2 py-3 text-slate-500 hover:text-slate-800 transition-all flex w-full rounded  mx-auto gap-2 text-center items-center justify-start cursor-pointer'>
                         <BiArrowBack size={24} />

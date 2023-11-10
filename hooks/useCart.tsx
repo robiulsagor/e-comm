@@ -12,7 +12,9 @@ interface cartContextType {
     handleRemoveProductFromCart: (product: CartProductType) => void;
     handleCartQtyIncrese: (product: CartProductType) => void;
     handleCartQtyDecrease: (product: CartProductType) => void;
-    handleRemoveAllProductFromCart: () => void
+    handleRemoveAllProductFromCart: () => void;
+    paymentIntent: string | null;
+    handleSetPaymentIntent: (val: string | null) => void
 }
 
 interface Props {
@@ -25,6 +27,7 @@ export const CartContextProvider = (props: Props) => {
     const [cartTotalQty, setCartTotalQty] = useState(0)
     const [cartTotalAmount, setCartTotalAmount] = useState(0)
     const [cartProducts, setCartProducts] = useState<CartProductType[] | null>(null)
+    const [paymentIntent, setPaymentIntent] = useState<string | null>(null)
 
     const handleAddProductToCart = useCallback(
         (product: CartProductType) => {
@@ -49,8 +52,8 @@ export const CartContextProvider = (props: Props) => {
         (product: CartProductType) => {
             if (cartProducts) {
                 const filteredProducts = cartProducts?.filter((item) => item.id !== product.id)
-                setCartProducts(filteredProducts)
                 toast.success("Product removed from cart.", { id: "productAdded" })
+                setCartProducts(filteredProducts)
                 localStorage.setItem("eCommShoppingCart", JSON.stringify(filteredProducts))
             }
 
@@ -108,6 +111,11 @@ export const CartContextProvider = (props: Props) => {
         if (productFromLocalStorage) {
             setCartProducts(productFromLocalStorage)
         }
+
+        const eCommPaymentIntent: any = localStorage.getItem("eCommPaymentIntent")
+        const paymentIntent: string | null = JSON.parse(eCommPaymentIntent)
+
+        setPaymentIntent(paymentIntent)
     }, [])
 
     useEffect(() => {
@@ -130,15 +138,22 @@ export const CartContextProvider = (props: Props) => {
         getTotals()
     }, [cartProducts])
 
+    const handleSetPaymentIntent = useCallback((val: string | null) => {
+        setPaymentIntent(val)
+        localStorage.setItem("eCommPaymentIntent", JSON.stringify(val))
+    }, [paymentIntent])
+
     const value = {
         cartTotalQty,
         cartTotalAmount,
         cartProducts,
+        paymentIntent,
         handleAddProductToCart,
         handleRemoveProductFromCart,
         handleCartQtyIncrese,
         handleCartQtyDecrease,
-        handleRemoveAllProductFromCart
+        handleRemoveAllProductFromCart,
+        handleSetPaymentIntent
     }
 
     return <CartContext.Provider value={value} {...props} />
